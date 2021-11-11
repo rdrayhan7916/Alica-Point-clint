@@ -5,6 +5,7 @@ import Header from '../../Shared/Header/Header';
 
 import Banner from '../Banner/Banner';
 import Products from '../Products/Products';
+import Review from '../Review/Review';
 
 
 const Home = () => {
@@ -12,7 +13,8 @@ const Home = () => {
         <div>
             <Header></Header>
             <Banner></Banner>
-            <Products></Products>
+            <Products number={7}></Products>
+            <Review></Review>
             <Footer></Footer>
         </div>
     );

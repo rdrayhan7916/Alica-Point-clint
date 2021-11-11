@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css'
 import useAuth from '../../../hooks/useAuth'
@@ -19,6 +19,7 @@ const Header = () => {
                     <Nav className="me-auto">
 
                         <Nav.Link><Link className="link" to="home"> Home</Link></Nav.Link>
+                        <Nav.Link><Link className="link" to="more"> More</Link></Nav.Link>
                         {
                             user?.email ?
                                 <Box>
@@ -34,15 +35,7 @@ const Header = () => {
                         }
 
                     </Nav>
-                    <Form className="d-flex">
-                        <FormControl
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
+
                 </Container>
             </Navbar>
         </div>

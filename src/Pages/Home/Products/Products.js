@@ -6,14 +6,15 @@ import Typography from '@mui/material/Typography';
 import Product from '../Home/Product/Product';
 
 
-const Products = () => {
+const Products = ({ number }) => {
+
     const [products, setProducts] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, [])
-    const pd = products.slice(5)
+    const pd = products.slice(number)
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Container>
