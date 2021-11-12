@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './context/AuthProvider/AuthProvider';
+import Admin from './Pages/Admin/Admin/Admin';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route path='/dashboard'>
               <Dashboard></Dashboard>
+            </Route>
+            <Route path='/admin'>
+              <Admin></Admin>
             </Route>
             <Route path='*'>
               <NotFound></NotFound>

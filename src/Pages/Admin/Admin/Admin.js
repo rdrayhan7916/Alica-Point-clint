@@ -16,13 +16,15 @@ import {
     useRouteMatch
 } from "react-router-dom";
 import { Button } from '@mui/material';
-import MyOrders from '../MyOrders/MyOrders';
-import AddReview from '../AddReview/AddReview';
 import useAuth from '../../../hooks/useAuth';
+import ManageOrders from '../MangeOrders/ManageOrders';
+import ManageProducts from '../ManageProducts/ManageProducts';
+import AddProduct from '../AddProduct/AddService';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
 
 const drawerWidth = 200;
 
-function Dashboard(props) {
+function Admin(props) {
     const { logOut } = useAuth()
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -35,10 +37,11 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
-            <Link to={`${url}/myorders`}><i class="fas fa-shopping-cart"></i><Button color="inherit">My Orders</Button></Link>
+            <Link to={`${url}/manageorders`}><i class="fas fa-shopping-cart"></i><Button color="inherit">Manage All Orders</Button></Link>
             <br />
-            <Link to={`${url}/addreview`}><i class="fas fa-pen-alt"></i><Button color="inherit">Review</Button></Link><br />
-            <Link to={`${url}/pay`}><i class="fas fa-pen-alt"></i><Button color="inherit">Pay</Button></Link><br />
+            <Link to={`${url}/manageproducts`}><i class="fas fa-pen-alt"></i><Button color="inherit">Manage All Products</Button></Link><br />
+            <Link to={`${url}/addproduct`}><i class="fas fa-pen-alt"></i><Button color="inherit">Add Product</Button></Link><br />
+            <Link to={`${url}/makeadmin`}><i class="fas fa-pen-alt"></i><Button color="inherit"> Make Admin</Button></Link><br />
             <Button onClick={logOut}><i class="fas fa-sign-out-alt"></i>LogOut</Button>
 
 
@@ -68,7 +71,7 @@ function Dashboard(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Dashboard
+                        Admin
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -111,13 +114,19 @@ function Dashboard(props) {
 
                 <Switch>
                     <Route exact path={path}>
-                        <MyOrders></MyOrders>
+                        <ManageOrders></ManageOrders>
                     </Route>
-                    <Route path={`${path}/myorders`}>
-                        <MyOrders></MyOrders>
+                    <Route path={`${path}/manageorders`}>
+                        <ManageOrders></ManageOrders>
                     </Route>
-                    <Route path={`${path}/addreview`}>
-                        <AddReview></AddReview>
+                    <Route path={`${path}/manageproducts`}>
+                        <ManageProducts></ManageProducts>
+                    </Route>
+                    <Route path={`${path}/addproduct`}>
+                        <AddProduct></AddProduct>
+                    </Route>
+                    <Route path={`${path}/makeadmin`}>
+                        <MakeAdmin></MakeAdmin>
                     </Route>
 
                 </Switch>
@@ -127,7 +136,7 @@ function Dashboard(props) {
     );
 }
 
-Dashboard.propTypes = {
+Admin.propTypes = {
     /**
      * Injected by the documentation to work in an iframe.
      * You won't need it on your project.
@@ -135,5 +144,5 @@ Dashboard.propTypes = {
     window: PropTypes.func,
 };
 
-export default Dashboard;
+export default Admin;
 

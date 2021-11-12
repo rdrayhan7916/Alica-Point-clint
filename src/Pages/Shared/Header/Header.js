@@ -20,6 +20,7 @@ const Header = () => {
 
                         <Nav.Link><Link className="link" to="home"> Home</Link></Nav.Link>
                         <Nav.Link><Link className="link" to="more"> More</Link></Nav.Link>
+                        <Nav.Link><Link className="link" to="admin"> Admin</Link></Nav.Link>
                         {
                             user?.email ?
                                 <Box>
