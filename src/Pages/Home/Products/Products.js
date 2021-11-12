@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Container } from '@mui/material';
+import { Alert, Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Product from '../Home/Product/Product';
 
 
 const Products = ({ number }) => {
+    const [orderSuccess, setOrderSuccess] = useState(false);
 
     const [products, setProducts] = useState([])
     useEffect(() => {
@@ -24,11 +25,13 @@ const Products = ({ number }) => {
                 <Typography sx={{ fontWeight: 600, m: 5 }} variant="h4" component="div">
                     Yahamaha Bike
                 </Typography>
+                {orderSuccess && <Alert sx={{ margin: 4 }} severity="success">Bike Order successfully!</Alert>}
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
                         pd.map(product => <Product
                             key={product.name}
                             product={product}
+                            setOrderSuccess={setOrderSuccess}
                         ></Product>)
                     }
                 </Grid>

@@ -5,9 +5,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Button from '@restart/ui/esm/Button';
+import OrderModel from '../../OrderModel/OrderModel';
 
-const Product = ({ product }) => {
+const Product = ({ product, setOrderSuccess }) => {
     const { name, img, price, engine, mileage } = product
+
+    const [openOrder, setOrderOpen] = React.useState(false);
+    const handleOrderOpen = () => setOrderOpen(true);
+    const handleOrderClose = () => setOrderOpen(false)
+
     return (
         <div>
             <Grid item xs={4} sm={4} md={6}>
@@ -23,18 +29,26 @@ const Product = ({ product }) => {
                             {name}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {engine}
+                            <h6> Engine: {engine}</h6>
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {mileage}
+                            <h6> Mileage: {mileage}</h6>
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {price}
+                            <h6> Price in BDT: {price}</h6>
                         </Typography>
-                        <Button className="btn btn-danger">BYU NOW</Button>
+                        <Button onClick={handleOrderOpen} className="btn btn-danger">BYU NOW</Button>
                     </CardContent>
                 </Card>
             </Grid>
+            <OrderModel
+                product={product}
+                openOrder={openOrder}
+                handleOrderClose={handleOrderClose}
+                setOrderSuccess={setOrderSuccess}
+            >
+
+            </OrderModel>
         </div>
     );
 };
