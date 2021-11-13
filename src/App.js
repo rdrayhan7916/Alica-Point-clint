@@ -5,6 +5,7 @@ import AuthProvider from './context/AuthProvider/AuthProvider';
 import Admin from './Pages/Admin/Admin/Admin';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import Home from './Pages/Home/Home/Home';
+import AdminRoute from './Pages/Login/AdminRoute/AdminRoute';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import More from './Pages/More/More';
@@ -34,9 +35,9 @@ function App() {
             <Route path='/dashboard'>
               <Dashboard></Dashboard>
             </Route>
-            <Route path='/admin'>
+            <AdminRoute path='/admin'>
               <Admin></Admin>
-            </Route>
+            </AdminRoute>
             <Route path='*'>
               <NotFound></NotFound>
             </Route>

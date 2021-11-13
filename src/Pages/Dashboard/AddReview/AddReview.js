@@ -5,7 +5,7 @@ import useAuth from '../../../hooks/useAuth'
 const AddReview = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        fetch("http://localhost:5000/addreview", {
+        fetch("https://guarded-temple-07884.herokuapp.com/addreview", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),

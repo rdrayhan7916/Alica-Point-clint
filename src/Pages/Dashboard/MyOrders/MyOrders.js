@@ -14,7 +14,7 @@ const MyOrders = () => {
     console.log(orders, user)
     useEffect(() => {
 
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
+        fetch(`https://guarded-temple-07884.herokuapp.com/orders?email=${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data));
     }, [user.email])

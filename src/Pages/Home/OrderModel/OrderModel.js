@@ -43,7 +43,7 @@ const OrderModel = ({ openOrder, handleOrderClose, product, setOrderSuccess }) =
 
         }
         // send to the server
-        fetch('http://localhost:5000/orders', {
+        fetch('https://guarded-temple-07884.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

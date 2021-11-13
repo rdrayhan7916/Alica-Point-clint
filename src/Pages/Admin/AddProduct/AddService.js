@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 const AddProduct = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        fetch("http://localhost:5000/addproduct", {
+        fetch("https://guarded-temple-07884.herokuapp.com/addproduct", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),

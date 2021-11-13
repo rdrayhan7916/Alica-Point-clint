@@ -7,7 +7,7 @@ import useAuth from '../../../hooks/useAuth'
 import { Box } from '@mui/system';
 
 const Header = () => {
-    const { user, logOut } = useAuth()
+    const { user, logOut, admin } = useAuth()
 
 
     return (
@@ -20,7 +20,10 @@ const Header = () => {
 
                         <Nav.Link><Link className="link" to="home"> Home</Link></Nav.Link>
                         <Nav.Link><Link className="link" to="more"> More</Link></Nav.Link>
-                        <Nav.Link><Link className="link" to="admin"> Admin</Link></Nav.Link>
+                        {
+                            admin && <>
+                                <Nav.Link><Link className="link" to="admin"> Admin</Link></Nav.Link></>
+                        }
                         {
                             user?.email ?
                                 <Box>

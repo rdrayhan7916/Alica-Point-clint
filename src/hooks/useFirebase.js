@@ -7,15 +7,17 @@ initializetion()
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
-    const [isLoading, setIsloading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('')
+    const [admin, setAdmin] = useState(false);
+
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
 
 
     const registerUser = (email, password, name, history) => {
-        setIsloading(true)
+        setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
             .then(() => {
                 const newUser = { email, displayName: name }
@@ -36,11 +38,11 @@ const useFirebase = () => {
                 setAuthError(error.message);
 
             })
-            .finally(() => setIsloading(false));
+            .finally(() => setIsLoading(false));
     }
 
     const singInWithGoogle = (location, history) => {
-        setIsloading(true)
+        setIsLoading(true)
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user
@@ -50,11 +52,11 @@ const useFirebase = () => {
                 history.replace(destination)
             }).catch((error) => {
                 setAuthError(error.message);
-            }).finally(() => setIsloading(false));
+            }).finally(() => setIsLoading(false));
     }
 
     const loginUser = (email, password, location, history) => {
-        setIsloading(true)
+        setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
                 const destination = location?.state?.from || '/'
@@ -65,7 +67,7 @@ const useFirebase = () => {
 
                 setAuthError(error.message);
             })
-            .finally(() => setIsloading(false));
+            .finally(() => setIsLoading(false));
     }
 
     useEffect(() => {
@@ -76,25 +78,31 @@ const useFirebase = () => {
             } else {
                 setUser({})
             }
-            setIsloading(false)
+            setIsLoading(false)
         });
         return () => unsubscribe
     }, [])
 
+    useEffect(() => {
+        fetch(`https://guarded-temple-07884.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
     const logOut = () => {
-        setIsloading(true)
+        setIsLoading(true)
         signOut(auth)
             .then(() => {
 
             }).catch((error) => {
 
             })
-            .finally(() => setIsloading(false));
+            .finally(() => setIsLoading(false));
     }
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:5000/users', {
+        fetch('https://guarded-temple-07884.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -107,6 +115,7 @@ const useFirebase = () => {
 
     return {
         user,
+        admin,
         registerUser,
         logOut,
         loginUser,

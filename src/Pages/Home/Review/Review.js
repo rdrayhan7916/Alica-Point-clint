@@ -5,7 +5,7 @@ const Review = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://guarded-temple-07884.herokuapp.com/review')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -15,7 +15,7 @@ const Review = () => {
             <h1 sx={{ color: "danger", margin: 2 }}>Reviews</h1>
             <Grid container spacing={2}>
                 {
-                    reviews.map(review => <Grid spacing={2} sx={{ border: 1, borderRadius: 16, marginTop: 4, bgcolor: 'text.secondary' }} xs={4} md={4}>
+                    reviews.map(review => <Grid spacing={2} sx={{ border: 1, borderRadius: 16, marginTop: 4, bgcolor: 'text.secondary' }} xs={6} md={4}>
 
                         <p>{review.description}</p>
                         <h3>{review.name}</h3>
