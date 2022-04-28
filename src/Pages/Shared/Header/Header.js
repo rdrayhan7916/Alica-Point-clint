@@ -33,9 +33,11 @@ const Header = () => {
                                     <Button sx={{ bgcolor: 'error.main' }} onClick={logOut} color="inherit">Logout</Button>
                                 </Box>
                                 :
-                                <NavLink style={{ textDecoration: 'none', color: 'white', marginTop: '2' }} to="/login">
+                                <Nav.Link style={{ textDecoration: 'none', color: 'white', marginTop: '2' }} to="/login">
+                                    <Link className='link'>
                                     Login
-                                </NavLink>
+                                    </Link>
+                                </Nav.Link>
                         }
 
                     </Nav>

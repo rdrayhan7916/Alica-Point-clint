@@ -1,4 +1,5 @@
 import React from 'react';
+import './Product.css'
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -17,7 +18,7 @@ const Product = ({ product, setOrderSuccess }) => {
     return (
         <div>
             <Grid item xs={4} sm={4} md={6}>
-                <Card sx={{ minWidth: 275, border: 0, boxShadow: 0 }}>
+                <Card className='card' sx={{ minWidth: 275, border: 0, boxShadow: 0 }}>
                     <CardMedia
                         component="img"
                         style={{ width: 'auto', height: '200px', margin: '0 auto' }}

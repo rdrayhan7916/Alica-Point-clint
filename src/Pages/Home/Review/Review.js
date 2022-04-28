@@ -1,6 +1,6 @@
-import { Grid } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-
+import './Review.css'
 const Review = () => {
     const [reviews, setReviews] = useState([])
 
@@ -12,16 +12,18 @@ const Review = () => {
     console.log(reviews)
     return (
         <div>
+            <Container>
             <h1 sx={{ color: "danger", margin: 2 }}>Reviews</h1>
-            <Grid container spacing={2}>
+            <Grid  container spacing={2}>
                 {
-                    reviews.map(review => <Grid spacing={2} sx={{ border: 1, borderRadius: 16, marginTop: 4, bgcolor: 'text.secondary' }} xs={6} md={4}>
+                    reviews.map(review => <Grid  className='review' spacing={2} sx={{ border: 1, borderRadius: 16, marginTop: 4, }} xs={6} md={4}>
 
-                        <p>{review.description}</p>
+                        <p className='description'>{review.description}</p>
                         <h3>{review.name}</h3>
                     </Grid>)
                 }
             </Grid>
+            </Container>
         </div>
     );
 };
